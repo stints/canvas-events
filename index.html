@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Canvas-Event.js</title>
+    <style>
+      #canvas-event {
+        width:800px;
+        height:600px;
+        margin-top:15px;
+        margin-left:auto;
+        margin-right:auto;
+        border:1px solid #000;
+        display:block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas-event" width=800 height=600>
+      You're browser does not support the canvas tag.  Sorry.
+    </canvas>
+    <script src="canvas-events.js"></script>
+    <script>
+      var canvas = document.getElementById("canvas-event");
+      var canvasEvents = new CanvasEvent(canvas);
+      var ctx = canvas.getContext("2d");
+      ctx.fillStyle = "rgb(200,0,0)";
+      params = {"x":10,"y":10,"width":55,"height":50}
+      ctx.fillRect(params.x, params.y, params.width, params.height);
+      canvasEvents.on("click", params, function(e) {
+        console.log("CLICKED INSIDE BOX");
+      });
+    </script>
+  </body>
+</html>
